@@ -23,4 +23,11 @@ public class BallMovement : MonoBehaviour
         //Xteki hýzýný sabitlemek adýna yazýldý
         float speedX = Mathf.Abs(ballRb.velocity.x) > maxXSpeed ? maxXSpeed * Mathf.Sign(ballRb.velocity.x) : ballRb.velocity.x;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("ScoreBoard"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
