@@ -1101,7 +1101,7 @@ MonoBehaviour:
   spawnDelayMin: 0.5
   spawnDelayMax: 2.5
   poolList: []
-  objectToPool: {fileID: 6072329239627709133, guid: 83c963b6e826bc34fb101f858a4ab643, type: 3}
+  objectToPool: {fileID: 6145076411114865377, guid: 1f94b47eb3d7e14418c0dd905dcdac88, type: 3}
   amountToPool: 30
 --- !u!1 &1103284658
 GameObject:
