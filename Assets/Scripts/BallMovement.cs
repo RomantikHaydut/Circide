@@ -7,6 +7,7 @@ public class BallMovement : MonoBehaviour
 {
     public float speedY = 5.0f;
     public float maxXSpeed = 3.0f;
+    public float maxYSpeed = 5.0f;
     private Rigidbody2D ballRb;
     public int score = 1;
     private TMP_Text scoreText;
@@ -30,14 +31,16 @@ public class BallMovement : MonoBehaviour
     {
 
         ballRb.velocity = new Vector2(ballRb.velocity.x, speedY);
+        
 
 
     }
     private void FixedUpdate()
     {
         //Xteki hýzýný sabitlemek adýna yazýldý
-        //float speedX = Mathf.Abs(ballRb.velocity.x) > maxXSpeed ? maxXSpeed * Mathf.Sign(ballRb.velocity.x) : ballRb.velocity.x;
+        float speedX = Mathf.Abs(ballRb.velocity.x) > maxXSpeed ? maxXSpeed * Mathf.Sign(ballRb.velocity.x) : ballRb.velocity.x;
         ballRb.velocity = Vector2.ClampMagnitude(ballRb.velocity, maxXSpeed);
+
     }
     void PopUpText()
     {
@@ -63,6 +66,7 @@ public class BallMovement : MonoBehaviour
             scoreManager?.IncreaseScore(score);  //Scoremanagere ulasip total scoreu arttýrmak icin kullandigim fonksiyona yolluyorum
             score = 1; //Topun tekrar spawnlanýrken scorunun 1den baslamasi icin yaptim
             gameObject.SetActive(false);
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

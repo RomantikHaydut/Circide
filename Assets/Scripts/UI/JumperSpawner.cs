@@ -29,9 +29,13 @@ public class JumperSpawner : MonoBehaviour, IPointerDownHandler
 
     private void SpawnJumper()
     {
-        if (Mathf.Abs(spawnRotationZ) <= 0.5f)
+        if (spawnRotationZ <= 20f)
         {
-            spawnRotationZ = 1;
+            spawnRotationZ = 20f;
+        }
+        if (spawnRotationZ <= -20f)
+        {
+            spawnRotationZ = -20f;
         }
         GameObject jumperClone = Instantiate(jumperPrefab, spawnPosTransform.position, Quaternion.identity);
         jumperClone.transform.eulerAngles = new Vector3(jumperClone.transform.eulerAngles.x, jumperClone.transform.eulerAngles.y, spawnRotationZ);

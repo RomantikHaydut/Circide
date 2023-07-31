@@ -9,6 +9,7 @@ public class Jumper : MonoBehaviour
     private float deltaX, deltaY;
     private BoxCollider2D ballCollider;
     bool isColliding;
+    UpgradeManager upgradeManager; //UpgradeManager
     private void Awake()
     {
         ballCollider = GetComponent<BoxCollider2D>();
