@@ -8,10 +8,11 @@ public class BallMovement : MonoBehaviour
     public float speedY = 5.0f;
     public float maxXSpeed = 3.0f;
     private Rigidbody2D ballRb;
-    private int score = 1;
+    public int score = 1;
     private TMP_Text scoreText;
     private RectTransform scoreRect;
     Vector3 rectScale;
+    ScoreManager scoreManager; //Scoremanager
 
 
     private void Awake()
@@ -21,7 +22,7 @@ public class BallMovement : MonoBehaviour
         scoreRect = GetComponentInChildren<RectTransform>();
         rectScale = scoreRect.transform.localScale;
         scoreText.gameObject.SetActive(false);
-        
+        scoreManager = FindObjectOfType<ScoreManager>(); //Score manager initialize 
     }
 
 
@@ -59,6 +60,8 @@ public class BallMovement : MonoBehaviour
     {
         if (collision.CompareTag("ScoreBoard"))
         {
+            scoreManager?.IncreaseScore(score);  //Scoremanagere ulasip total scoreu arttýrmak icin kullandigim fonksiyona yolluyorum
+            score = 1; //Topun tekrar spawnlanýrken scorunun 1den baslamasi icin yaptim
             gameObject.SetActive(false);
         }
     }
@@ -69,7 +72,7 @@ public class BallMovement : MonoBehaviour
             score++;
             PopUpText();
             UpdateScoreText();
-            //popupanimation
+            
         }
         void UpdateScoreText()
         {

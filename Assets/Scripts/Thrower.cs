@@ -9,12 +9,17 @@ public class Thrower : MonoBehaviour
     public float spawnDelay = 0.5f;
     public float spawnDelayMin = 0.5f;
     public float spawnDelayMax = 2.5f;
+    
     #region Pool
     public List<GameObject> poolList;
     public GameObject objectToPool;
     public int amountToPool;
     #endregion
 
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         poolList = new List<GameObject>();
@@ -48,7 +53,9 @@ public class Thrower : MonoBehaviour
         {
             if (!poolList[i].activeInHierarchy)
             {
+               
                 return poolList[i];
+
             }
         }
         return null;
