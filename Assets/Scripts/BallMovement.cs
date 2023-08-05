@@ -6,7 +6,7 @@ using DG.Tweening;
 public class BallMovement : MonoBehaviour
 {
     public float speedY = 5.0f;
-    public float maxXSpeed = 3.0f;
+    public float maxXSpeed = 6.0f;
     private Rigidbody2D ballRb;
     public int score = 1;
     private TMP_Text scoreText;

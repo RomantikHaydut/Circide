@@ -68,6 +68,10 @@ public class Thrower : MonoBehaviour
     {
         UpgradeManager.Instance.onThrowerSpeedIncrease.AddListener(DecDelay);
     }
+    private void OnDisable()
+    {
+        UpgradeManager.Instance.onThrowerSpeedIncrease.RemoveListener(DecDelay);
+    }
     public void DecDelay(float decrementAmount)
     {
         spawnDelayMin -= 1;
