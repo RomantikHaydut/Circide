@@ -1,17 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
-    public float boardCost;
-    public float ballSpawnSpeed;
-    public float boardLimit;
-    public float ballDoubleChance;
-    public float ballAirFriction;
-    Thrower thrower;
-    BallMovement ballMovement;
+    [System.Serializable]
+    public class FloatEvent : UnityEvent<float> { }
+    public FloatEvent onSpeedUpgraded;
+    public FloatEvent onDecSpawnDelay;
     private void Awake()
     {
         if (Instance == null)
@@ -25,33 +22,13 @@ public class UpgradeManager : MonoBehaviour
 
             Destroy(gameObject);
         }
-        //Script Atamalari
-        thrower = FindObjectOfType<Thrower>();
-        ballMovement = FindObjectOfType<BallMovement>();
+        
     }
-    void Start()
+    public void IncSpeed(float incrementAmount)
     {
-
+        onSpeedUpgraded?.Invoke(incrementAmount);
     }
-
-
-    void Update()
-    {
-
-    }
-    public void BoardCostInc()
-    {
-        thrower.spawnDelay -= 0.5f;
-    }
-    public void BoardLimitInc()
-    {
-
-    }
-    public void BallFrictionDec()
-    {
-
-    }
-    public void BallDoubleChanceInc()
+    public void DecSpawnDelay(float decreamentAmount)
     {
 
     }

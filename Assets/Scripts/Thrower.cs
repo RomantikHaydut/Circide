@@ -9,7 +9,7 @@ public class Thrower : MonoBehaviour
     public float spawnDelay = 0.5f;
     public float spawnDelayMin = 0.5f;
     public float spawnDelayMax = 2.5f;
-    UpgradeManager upgradeManager;
+    
     
     #region Pool
     public List<GameObject> poolList;
@@ -19,7 +19,7 @@ public class Thrower : MonoBehaviour
 
     private void Awake()
     {
-        upgradeManager = FindObjectOfType<UpgradeManager>();
+        
 
     }
     void Start()
