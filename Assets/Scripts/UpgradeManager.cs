@@ -7,7 +7,7 @@ public class UpgradeManager : MonoBehaviour
     public static UpgradeManager Instance;
     [System.Serializable]
     public class FloatEvent : UnityEvent<float> { }
-    public FloatEvent onThrowerSpeedIncrease;
+    public FloatEvent onThrowerSpeedDecrease;
     private void Awake()
     {
         if (Instance == null)
@@ -25,7 +25,7 @@ public class UpgradeManager : MonoBehaviour
     }
     public void DecDelayTime(float decrementAmount)
     {
-        onThrowerSpeedIncrease?.Invoke(decrementAmount);
+        onThrowerSpeedDecrease?.Invoke(decrementAmount);
     }
     public void IncSpeed(float incrementAmount)
     {
@@ -34,9 +34,7 @@ public class UpgradeManager : MonoBehaviour
             ball.IncreaseSpeed(incrementAmount);
         }
     }
-    public void DecSpawnDelay(float decrementAmount)
-    {
+    
 
-    }
 
 }

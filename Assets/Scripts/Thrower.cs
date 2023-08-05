@@ -66,11 +66,11 @@ public class Thrower : MonoBehaviour
     }
     private void OnEnable()
     {
-        UpgradeManager.Instance.onThrowerSpeedIncrease.AddListener(DecDelay);
+        UpgradeManager.Instance.onThrowerSpeedDecrease.AddListener(DecDelay);
     }
     private void OnDisable()
     {
-        UpgradeManager.Instance.onThrowerSpeedIncrease.RemoveListener(DecDelay);
+        UpgradeManager.Instance.onThrowerSpeedDecrease.RemoveListener(DecDelay);
     }
     public void DecDelay(float decrementAmount)
     {
