@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Thrower : MonoBehaviour
 {
     public float spawnRange = 1.7f;
-    public float spawnHeight = 20.0f;
-    public float spawnDelay = 0.5f;
-    public float spawnDelayMin = 0.5f;
-    public float spawnDelayMax = 2.5f;
+    public float spawnHeight = 8f;
+    public float spawnDelay;
+    public float spawnDelayMin;
+    public float spawnDelayMax;
+
     
     
     #region Pool
@@ -34,6 +35,7 @@ public class Thrower : MonoBehaviour
 
         InvokeRepeating("SpawnObject", spawnDelayMin, spawnDelay);
     }
+
 
     void SpawnObject()
     {
@@ -61,5 +63,14 @@ public class Thrower : MonoBehaviour
             }
         }
         return null;
+    }
+    private void OnEnable()
+    {
+        UpgradeManager.Instance.onThrowerSpeedIncrease.AddListener(DecDelay);
+    }
+    public void DecDelay(float decrementAmount)
+    {
+        spawnDelayMin -= 1;
+        spawnDelayMax -= 1;
     }
 }

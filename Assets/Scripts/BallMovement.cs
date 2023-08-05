@@ -7,13 +7,13 @@ public class BallMovement : MonoBehaviour
 {
     public float speedY = 5.0f;
     public float maxXSpeed = 3.0f;
-    public float maxYSpeed = 5.0f;
     private Rigidbody2D ballRb;
     public int score = 1;
     private TMP_Text scoreText;
     private RectTransform scoreRect;
     Vector3 rectScale;
     ScoreManager scoreManager; //Scoremanager
+    public static List<BallMovement> Balls = new List<BallMovement>();
 
 
     private void Awake()
@@ -34,6 +34,10 @@ public class BallMovement : MonoBehaviour
         
 
 
+    }
+    private void Update()
+    {
+        
     }
     private void FixedUpdate()
     {
@@ -60,10 +64,21 @@ public class BallMovement : MonoBehaviour
         });
     }
     //Upgrade Fonksiyonlarý
+    
     public void IncreaseSpeed(float incrementAmount)
     {
-        speedY += incrementAmount;
+         speedY += incrementAmount;
     }
+    private void OnEnable()
+    {
+        Balls.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        Balls.Add(this);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ScoreBoard"))
